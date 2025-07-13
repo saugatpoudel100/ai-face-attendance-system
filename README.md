@@ -124,11 +124,3 @@ Flask web framework
 
 Inspired by various open source face attendance projects
 
-yaml
-Copy code
-
----
-
-Just copy this full text into your README.md file and it will show everything nicely formatted including your project structure!
-
-If you want, I can also help prepare a `requirements.txt` or badges — just ask.
