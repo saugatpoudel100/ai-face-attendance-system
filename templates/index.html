@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Attendance</title>
+</head>
+<body>
+    <h1>Face Recognition Attendance</h1>
+
+    <img src="{{ url_for('video_feed') }}" width="640" height="480" />
+
+    <h2>Mark Attendance</h2>
+    <label for="nameSelect">Recognized Name:</label>
+    <select id="nameSelect">
+        <option value="">-- Select Name --</option>
+    </select>
+
+    <label for="markType">Type:</label>
+    <select id="markType">
+        <option value="Entry">Entry</option>
+        <option value="Exit">Exit</option>
+    </select>
+
+    <button onclick="submitAttendance()">Submit</button>
+
+    <p id="response"></p>
+
+    <script>
+        async function fetchNames() {
+            const res = await fetch('/get_names');
+            const data = await res.json();
+            const nameSelect = document.getElementById('nameSelect');
+            // Clear options except placeholder
+            nameSelect.options.length = 1;
+            data.names.forEach(name => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                nameSelect.appendChild(option);
+            });
+        }
+
+        async function submitAttendance() {
+            const name = document.getElementById('nameSelect').value;
+            const type = document.getElementById('markType').value;
+            if (!name) {
+                alert('Please select a name');
+                return;
+            }
+            const response = await fetch('/mark_attendance', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({name: name, type: type})
+            });
+            const data = await response.json();
+            const respP = document.getElementById('response');
+            if (response.ok) {
+                respP.style.color = 'green';
+                respP.textContent = data.message;
+            } else {
+                respP.style.color = 'red';
+                respP.textContent = data.error;
+            }
+        }
+
+        // Poll names every 3 seconds
+        setInterval(fetchNames, 3000);
+        fetchNames();  // initial load
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Records</title>
+</head>
+<body>
+    <h1>Attendance Records</h1>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Entry Time</th>
+                <th>Exit Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row.name }}</td>
+                <td>{{ row.date }}</td>
+                <td>{{ row.entry_time }}</td>
+                <td>{{ row.exit_time or '-' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Back</a>
+</body>
+</html>
