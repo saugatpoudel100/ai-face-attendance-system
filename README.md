@@ -14,6 +14,7 @@ This system captures video from your webcam, recognizes registered faces, and lo
 - Live video streaming on a web page  
 - Dashboard to view attendance history  
 
+---
 
 ## Requirements
 
@@ -86,49 +87,48 @@ This system captures video from your webcam, recognizes registered faces, and lo
 
 ## Project Structure
 
+```plaintext
 ai_face_attendance_system/
-│
-├── app.py # Flask app main file
-├── camera.py # Webcam video capture class
-├── recognize.py # Face recognition and annotation logic
-├── train_model.py # Script to train face encodings from dataset
-├── database.py # Database models and functions (SQLite)
-├── attendance.db # SQLite database file (auto-generated)
-├── dataset/ # Folder containing face images (organized by person)
-├── templates/ # HTML templates for Flask routes
-│ ├── index.html
-│ └── attendance.html
-├── static/ # Static assets like CSS, JS (optional)
-├── requirements.txt # Python dependencies
-└── README.md # This file
+├── app.py               # Flask app main file
+├── camera.py            # Webcam video capture class
+├── recognize.py         # Face recognition and annotation logic
+├── train_model.py       # Script to train face encodings from dataset
+├── database.py          # Database models and functions (SQLite)
+├── attendance.db        # SQLite database file (auto-generated)
+├── dataset/             # Folder containing face images (organized by person)
+├── templates/           # HTML templates for Flask routes
+│   ├── index.html
+│   └── attendance.html
+├── static/              # Static assets like CSS, JS (optional)
+├── requirements.txt     # Python dependencies
+└── README.md            # This file
+Troubleshooting
+Camera not opening:
+Check if your webcam is connected and accessible. Try running a standalone OpenCV camera test.
+
+Face recognition errors:
+Make sure the images in dataset/ are clear face pictures. Also ensure frames are converted from BGR to RGB before recognition.
+
+No video feed on web page:
+Confirm the video feed route /video_feed is working and your browser allows webcam access.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Acknowledgments
+OpenCV for computer vision tools
+
+face_recognition library by Adam Geitgey
+
+Flask web framework
+
+Inspired by various open source face attendance projects
 
 yaml
 Copy code
 
 ---
 
-## Troubleshooting
+Just copy this full text into your README.md file and it will show everything nicely formatted including your project structure!
 
-- **Camera not opening:**  
-  Check if your webcam is connected and accessible. Try running a standalone OpenCV camera test.
-
-- **Face recognition errors:**  
-  Make sure the images in `dataset/` are clear face pictures. Also ensure frames are converted from BGR to RGB before recognition.
-
-- **No video feed on web page:**  
-  Confirm the video feed route `/video_feed` is working and your browser allows webcam access.
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## Acknowledgments
-
-- [OpenCV](https://opencv.org/) for computer vision tools  
-- [face_recognition](https://github.com/ageitgey/face_recognition) library by Adam Geitgey  
-- Flask web framework  
-- Inspired by various open source face attendance projects  
+If you want, I can also help prepare a `requirements.txt` or badges — just ask.
