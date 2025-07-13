@@ -7,20 +7,13 @@ This system captures video from your webcam, recognizes registered faces, and lo
 
 ## Features
 
-- Real-time face detection and recognition using OpenCV and face_recognition library  
+- Real-time face detection and recognition using OpenCV and the face_recognition library  
 - Attendance marking with Entry and Exit types  
 - Web-based interface powered by Flask  
 - Stores attendance records in SQLite database  
 - Live video streaming on a web page  
 - Dashboard to view attendance history  
 
----
-
-## Demo Screenshot
-
-![Demo Screenshot](docs/demo_screenshot.png)
-
----
 
 ## Requirements
 
@@ -37,82 +30,105 @@ This system captures video from your webcam, recognizes registered faces, and lo
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/yourusername/ai_face_attendance_system.git
-   cd ai_face_attendance_system
-Create and activate a virtual environment (optional but recommended):
+    ```bash
+    git clone https://github.com/yourusername/ai_face_attendance_system.git
+    cd ai_face_attendance_system
+    ```
 
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
-Install required packages:
+2. Create and activate a virtual environment (optional but recommended):
 
-bash
-Copy code
-pip install -r requirements.txt
-Prepare your dataset folder:
+    ```bash
+    python -m venv venv
+    # On Windows:
+    venv\Scripts\activate
+    # On macOS/Linux:
+    source venv/bin/activate
+    ```
 
-Create a dataset/ directory in the project root.
+3. Install required packages:
 
-Add subfolders named after each person (e.g., dataset/John/) containing their face images.
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Train the model (if applicable):
+4. Prepare your dataset folder:
 
-bash
-Copy code
-python train_model.py
-Usage
-Run the Flask app:
+    - Create a `dataset/` directory in the project root.  
+    - Add subfolders named after each person (e.g., `dataset/John/`) containing their face images.
 
-bash
-Copy code
-python app.py
-Open your browser and visit:
+5. Train the model (if applicable):
 
-arduino
-Copy code
-http://localhost:5000/
-The webcam feed should appear. When recognized faces are detected, their names will show and attendance can be marked.
+    ```bash
+    python train_model.py
+    ```
 
-Navigate to the attendance page to see logged records.
+---
 
-Project Structure
-graphql
-Copy code
+## Usage
+
+1. Run the Flask app:
+
+    ```bash
+    python app.py
+    ```
+
+2. Open your browser and visit:
+
+    ```
+    http://localhost:5000/
+    ```
+
+3. The webcam feed should appear. When recognized faces are detected, their names will show and attendance can be marked.
+
+4. Navigate to the attendance page to see logged records.
+
+---
+
+## Project Structure
+
 ai_face_attendance_system/
 │
-├── app.py               # Flask app main file
-├── camera.py            # Webcam video capture class
-├── recognize.py         # Face recognition and annotation logic
-├── train_model.py       # Script to train face encodings from dataset
-├── database.py          # Database models and functions (SQLite)
-├── attendance.db        # SQLite database file (auto-generated)
-├── dataset/             # Folder containing face images (organized by person)
-├── templates/           # HTML templates for Flask routes
-│   ├── index.html
-│   └── attendance.html
-├── static/              # Static assets like CSS, JS (optional)
-├── requirements.txt     # Python dependencies
-└── README.md            # This file
-Troubleshooting
-Camera not opening:
-Check if your webcam is connected and accessible. Try running a standalone OpenCV camera test.
+├── app.py # Flask app main file
+├── camera.py # Webcam video capture class
+├── recognize.py # Face recognition and annotation logic
+├── train_model.py # Script to train face encodings from dataset
+├── database.py # Database models and functions (SQLite)
+├── attendance.db # SQLite database file (auto-generated)
+├── dataset/ # Folder containing face images (organized by person)
+├── templates/ # HTML templates for Flask routes
+│ ├── index.html
+│ └── attendance.html
+├── static/ # Static assets like CSS, JS (optional)
+├── requirements.txt # Python dependencies
+└── README.md # This file
 
-Face recognition errors:
-Make sure the images in dataset/ are clear face pictures. Also ensure frames are converted from BGR to RGB before recognition.
+yaml
+Copy code
 
-No video feed on web page:
-Confirm the video feed route /video_feed is working and your browser allows webcam access.
+---
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Troubleshooting
 
-Acknowledgments
-OpenCV for computer vision tools
+- **Camera not opening:**  
+  Check if your webcam is connected and accessible. Try running a standalone OpenCV camera test.
 
-face_recognition library by Adam Geitgey
+- **Face recognition errors:**  
+  Make sure the images in `dataset/` are clear face pictures. Also ensure frames are converted from BGR to RGB before recognition.
 
-Flask web framework
+- **No video feed on web page:**  
+  Confirm the video feed route `/video_feed` is working and your browser allows webcam access.
 
-Inspired by various open source face attendance projects
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgments
+
+- [OpenCV](https://opencv.org/) for computer vision tools  
+- [face_recognition](https://github.com/ageitgey/face_recognition) library by Adam Geitgey  
+- Flask web framework  
+- Inspired by various open source face attendance projects  
