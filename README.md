@@ -32,7 +32,7 @@ This system captures video from your webcam, recognizes registered faces, and lo
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/ai_face_attendance_system.git
+    git clone https://github.com/saugatpoudel100/ai_face_attendance_system.git
     cd ai_face_attendance_system
     ```
 
@@ -103,19 +103,21 @@ ai_face_attendance_system/
 ├── requirements.txt     # Python dependencies
 └── README.md            # This file
 Troubleshooting
-Camera not opening:
+```
+---
+## Camera not opening:
 Check if your webcam is connected and accessible. Try running a standalone OpenCV camera test.
 
-Face recognition errors:
+## Face recognition errors:
 Make sure the images in dataset/ are clear face pictures. Also ensure frames are converted from BGR to RGB before recognition.
 
-No video feed on web page:
+## No video feed on web page:
 Confirm the video feed route /video_feed is working and your browser allows webcam access.
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Acknowledgments
+## Acknowledgments
 OpenCV for computer vision tools
 
 face_recognition library by Adam Geitgey
